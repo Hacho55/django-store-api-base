@@ -5,5 +5,13 @@
     {% else %}
     <h1>Hello World</h1>
     {% endif %}
+
+    {{results}}
+
+    {% comment %} <ul>
+      {% for result in results %}
+        <li>{{ result.id }} - {{ result.customer.first_name }}</li>
+      {% endfor %}
+    </ul> {% endcomment %}
   </body>
 </html>
