@@ -1,4 +1,4 @@
-# Storefront
+# Storefront - Work in progress
 
 eCommerce Django backend base app and Django Rest framework
 
