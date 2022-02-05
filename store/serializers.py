@@ -14,7 +14,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         # fields = '__all__' # brings all fields
-        fields = ['id', 'title', 'unit_price', 'price_with_tax', 'collection']
+        fields = ['id', 'title', 'slug', 'description', 'inventory',
+                  'unit_price', 'price_with_tax', 'collection']
     # id = serializers.IntegerField()
     # title = serializers.CharField()
     # price = serializers.DecimalField(

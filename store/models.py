@@ -14,9 +14,10 @@ class Collection(models.Model):
 
     def __str__(self) -> str:
         return self.title
-    
+
     class Meta:
         ordering = ['title']
+
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
@@ -30,9 +31,10 @@ class Product(models.Model):
     last_update = models.DateTimeField(auto_now=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     promotions = models.ManyToManyField(Promotion, blank=True)
-    
+
     def __str__(self) -> str:
         return self.title
+
     class Meta:
         ordering = ['title']
 
@@ -54,14 +56,12 @@ class Customer(models.Model):
     birth_date = models.DateField(null=True)
     membership = models.CharField(
         max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
-    
+
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
-    
+
     class Meta:
         ordering = ['first_name', 'last_name']
-    
-    
 
 
 class Order(models.Model):
@@ -82,7 +82,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.PROTECT)
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product = models.ForeignKey(
+        Product, on_delete=models.PROTECT, related_name='orderitems')
     quantity = models.PositiveSmallIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
 
